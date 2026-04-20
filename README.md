@@ -1,4 +1,4 @@
-# こんにちは (Konnichiwa), I'm Sỳ Chí Khởi (Molten) 👋
+# こんにちは, I'm Sỳ Chí Khởi (Molten) 👋
 ### 🎓 Software Engineering Freshman | Future Bridge Software Engineer (BrSE)
 
 ![Professional Branding Banner](github_banner.png)
