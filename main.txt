@@ -1,0 +1,26 @@
+package baikiemtra;
+
+import java.util.Scanner;
+
+public class BaiKiemTra {
+    // 9. Hàm main thực thi chương trình
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Khởi tạo đối tượng SinhVien từ bản thiết kế ở file riêng biệt
+        SinhVien sv = new SinhVien();
+
+        System.out.println("====== NHAP THONG TIN SINH VIEN ======");
+        sv.nhapThongTin(sc);
+
+        System.out.println("\n====== KET QUA DIEM KIEM TRA ======");
+        // In tiêu đề bảng thẳng hàng
+        System.out.printf("%-10s %-15s %-5s %-5s %-5s %-12s %-10s\n", 
+                "Ma So", "Ten", "GK", "CK", "TB", "Loai", "KetQua");
+        
+        // Gọi đối tượng xuất dữ liệu ra
+        sv.xuatThongTin();
+
+        sc.close(); // Đóng cổng nhập liệu
+    }
+}
