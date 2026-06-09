@@ -1,0 +1,74 @@
+package baikiemtra;
+
+import java.util.Scanner;
+
+public class SinhVien {
+    // Thuộc tính (Fields) - Đóng gói bảo mật
+    private String maSo;
+    private String ten;
+    private double gk;
+    private double ck;
+    private double tb;
+
+    // 1. Constructor mặc định (Không tham số)
+    public SinhVien() {
+        this.maSo = "001";
+        this.ten = "Binh";
+        this.gk = 0.0;
+        this.ck = 0.0;
+        tinhTB(); // Tự động tính toán khi khởi tạo
+    }
+
+    // 2. Constructor đầy đủ tham số
+    public SinhVien(String maSo, String ten, double gk, double ck) {
+        this.maSo = maSo;
+        this.ten = ten;
+        this.gk = gk;
+        this.ck = ck;
+        tinhTB();
+    }
+
+    // 3. Hàm nhập thông tin sinh viên từ bàn phím
+    public void nhapThongTin(Scanner sc) {
+        System.out.print("Nhap Ma so: ");
+        this.maSo = sc.nextLine();
+        System.out.print("Nhap Ten: ");
+        this.ten = sc.nextLine();
+        System.out.print("Nhap diem GK (40%): ");
+        this.gk = sc.nextDouble();
+        System.out.print("Nhap diem CK (60%): ");
+        this.ck = sc.nextDouble();
+        sc.nextLine(); // Xóa bộ đệm dữ liệu thừa sau khi nhập số
+        tinhTB(); // Cập nhật lại điểm trung bình ngay sau khi nhập xong
+    }
+
+    // 4. Getter cho điểm trung bình (chỉ xem, không cho sửa trực tiếp)
+    public double getTb() {
+        return tb;
+    }
+
+    // 5. Hàm tính điểm trung bình nội bộ (private)
+    private void tinhTB() {
+        this.tb = (this.gk * 0.4) + (this.ck * 0.6);
+    }
+
+    // 6. Hàm xác định xếp loại học lực
+    public String getLoai() {
+        if (tb >= 8.0) return "Gioi";
+        if (tb >= 6.5) return "Kha";
+        if (tb >= 5.0) return "Trung binh";
+        return "Yeu";
+    }
+
+    // 7. Hàm kiểm tra điều kiện Đậu hay Rớt
+    public boolean kiemTraDauRot() {
+        return tb >= 5.0;
+    }
+
+    // 8. Hàm in dữ liệu của sinh viên theo hàng format thẳng cột
+    public void xuatThongTin() {
+        String ketQua = kiemTraDauRot() ? "Dau" : "Rot";
+        System.out.printf("%-10s %-15s %-5.1f %-5.1f %-5.1f %-12s %-10s\n", 
+                maSo, ten, gk, ck, tb, getLoai(), ketQua);
+    }
+}
